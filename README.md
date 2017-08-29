@@ -36,6 +36,8 @@ getSupportFragmentManager().beginTransaction()
 
 # Screenshots
 <img alt="Screenshot 1" src="assets/device-art/social-fragment-1.png" width="256" />
+<img alt="Screenshot 2" src="assets/device-art/social-fragment-2.png" width="256" />
+<img alt="Screenshot 3" src="assets/device-art/social-fragment-3.png" width="256" />
 
 # Download
 ```groovy
