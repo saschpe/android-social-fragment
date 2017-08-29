@@ -5,13 +5,37 @@
 [![Build Status](https://travis-ci.org/saschpe/android-socialfragment.svg?branch=master)](https://travis-ci.org/saschpe/android-socialfragment)
 <a href="http://www.methodscount.com/?lib=saschpe.android%3Asocialfragment%3A1.0.2"><img src="https://img.shields.io/badge/Methods and size-core: 100 | deps: 19640 | 25 KB-e91e63.svg"/></a>
 
+A reusable fragment to display links to social networks, the Play Store as well
+as recommendation and support email links. The fragment tries to open installed
+apps on the user's device first and resorts to the web browser otherwise.
+
+# Usage
+Use the **SocialFragment.Builder** class to set up a new **SocialFragment**.
+Only the values provided will appear. 
+
+```java
+// Set up social fragment
+SocialFragment fragment =  new SocialFragment.Builder()
+    .setApplicationId(BuildConfig.APPLICATION_ID)
+    .setApplicationName(getString(R.string.app_name))
+    .setContactEmailAddress("saschpe@example.com")
+    .setFacebookGroup("466079123741258")
+    .setGooglePlusGroup("116602691405798233571")
+    .setTwitterProfile("saschpe")
+    .build();
+
+// Attach it to the parent activity
+getSupportFragmentManager().beginTransaction()
+    .add(R.id.fragment_placeholder,fragment)
+    .commit();
+```
+
 # Download
 ```groovy
 compile 'saschpe.android:social-fragment:1.0.0'
 ```
 
 Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].
-
 
 # License
 
