@@ -34,6 +34,9 @@ getSupportFragmentManager().beginTransaction()
     .commit();
 ```
 
+# Screenshots
+<img alt="Screenshot 1" src="assets/device-art/social-fragment-1.png" width="256" />
+
 # Download
 ```groovy
 compile 'saschpe.android:social-fragment:1.0.0'
