@@ -50,12 +50,19 @@ public final class SocialFragment extends Fragment {
     public static final String ARG_RECOMMENDATION_SUBJECT = "recommendation_subject";
     public static final String ARG_TWITTER_PROFILE = "twitter_profile";
 
+    // Social networks links
+    private TextView followTitle;
     private TextView followTwitter;
     private TextView joinGoogleGroup;
     private TextView openFacebookGroup;
-    private TextView provideFeedback;
+
+    // Recommendation links
     private TextView rateOnPlayStore;
     private TextView recommendToFriend;
+
+    // Feedback links
+    private TextView contactTitle;
+    private TextView provideFeedback;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -68,12 +75,17 @@ public final class SocialFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_social, container, false);
+        followTitle = view.findViewById(R.id.follow_title);
         followTwitter = view.findViewById(R.id.follow_twitter);
         joinGoogleGroup = view.findViewById(R.id.join_google_plus_group);
         openFacebookGroup = view.findViewById(R.id.open_facebook_group);
-        provideFeedback = view.findViewById(R.id.provide_feedback);
+
         rateOnPlayStore = view.findViewById(R.id.rate_play_store);
         recommendToFriend = view.findViewById(R.id.recommend_to_friend);
+
+        contactTitle = view.findViewById(R.id.contact_title);
+        provideFeedback = view.findViewById(R.id.provide_feedback);
+
         return view;
     }
 
@@ -81,6 +93,12 @@ public final class SocialFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final Bundle args = getArguments();
+
+        if (args.containsKey(ARG_FACEBOOK_PAGE)
+                || args.containsKey(ARG_GOOGLE_PLUS_GROUP)
+                || args.containsKey(ARG_TWITTER_PROFILE)) {
+            followTitle.setVisibility(View.VISIBLE);
+        }
 
         if (args.containsKey(ARG_FACEBOOK_PAGE)) {
             openFacebookGroup.setVisibility(View.VISIBLE);
@@ -127,7 +145,6 @@ public final class SocialFragment extends Fragment {
             });
         }
 
-        rateOnPlayStore.setVisibility(View.VISIBLE);
         rateOnPlayStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -152,30 +169,31 @@ public final class SocialFragment extends Fragment {
             }
         });
 
-            final String recommendSubject;
-            if (args.containsKey(ARG_RECOMMENDATION_SUBJECT)) {
-                recommendSubject = args.getString(ARG_RECOMMENDATION_SUBJECT);
-            } else if (args.containsKey(ARG_APPLICATION_NAME)) {
-                recommendSubject = getString(R.string.get_the_app_template, args.getString(ARG_APPLICATION_NAME));
-            } else  {
-                recommendSubject = getString(R.string.get_the_app);
+        final String recommendSubject;
+        if (args.containsKey(ARG_RECOMMENDATION_SUBJECT)) {
+            recommendSubject = args.getString(ARG_RECOMMENDATION_SUBJECT);
+        } else if (args.containsKey(ARG_APPLICATION_NAME)) {
+            recommendSubject = getString(R.string.get_the_app_template, args.getString(ARG_APPLICATION_NAME));
+        } else {
+            recommendSubject = getString(R.string.get_the_app);
+        }
+
+        recommendToFriend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String text = Uri.parse("http://play.google.com/store/apps/details?id=" + args.getString(ARG_APPLICATION_ID)).toString();
+
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND)
+                        .setType("text/plain")
+                        .putExtra(Intent.EXTRA_SUBJECT, recommendSubject)
+                        .putExtra(Intent.EXTRA_TEXT, text);
+                startActivity(Intent.createChooser(sharingIntent, view.getContext().getString(R.string.share_via)));
             }
-
-            recommendToFriend.setVisibility(View.VISIBLE);
-            recommendToFriend.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    String text = Uri.parse("http://play.google.com/store/apps/details?id=" + args.getString(ARG_APPLICATION_ID)).toString();
-
-                    Intent sharingIntent = new Intent(Intent.ACTION_SEND)
-                            .setType("text/plain")
-                            .putExtra(Intent.EXTRA_SUBJECT, recommendSubject)
-                            .putExtra(Intent.EXTRA_TEXT, text);
-                    startActivity(Intent.createChooser(sharingIntent, view.getContext().getString(R.string.share_via)));
-                }
-            });
+        });
 
         if (args.containsKey(ARG_CONTACT_EMAIL_ADDRESS)) {
+            contactTitle.setVisibility(View.VISIBLE);
+
             final String emailSubject;
             if (args.containsKey(ARG_CONTACT_EMAIL_SUBJECT)) {
                 emailSubject = args.getString(ARG_CONTACT_EMAIL_SUBJECT);

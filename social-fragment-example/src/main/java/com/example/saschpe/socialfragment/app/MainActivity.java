@@ -20,7 +20,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import com.example.saschpe.socialfragment.BuildConfig;
 import com.example.saschpe.socialfragment.R;
 
 import saschpe.android.socialfragment.app.SocialFragment;
@@ -37,8 +36,8 @@ public final class MainActivity extends AppCompatActivity {
 
         // Set up social fragment
         SocialFragment fragment =  new SocialFragment.Builder()
-                .setApplicationId(BuildConfig.APPLICATION_ID)
-                .setApplicationName(getString(R.string.app_name))
+                .setApplicationId("saschpe.alphaplus")
+                .setApplicationName("Alpha+ Player")
                 .setContactEmailAddress("saschpe@example.com")
                 .setFacebookGroup("466079123741258")
                 .setGooglePlusGroup("116602691405798233571")

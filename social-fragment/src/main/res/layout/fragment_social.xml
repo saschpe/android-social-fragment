@@ -34,7 +34,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="@string/follow"
-            android:textColor="?attr/colorAccent"
             android:visibility="gone"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -116,13 +115,10 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:text="@string/support_us"
-            android:textColor="?attr/colorAccent"
-            android:visibility="gone"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/follow_twitter"
-            tools:visibility="visible"/>
+            app:layout_constraintTop_toBottomOf="@+id/follow_twitter"/>
 
         <TextView
             android:id="@+id/rate_play_store"
@@ -139,12 +135,10 @@
             android:gravity="center_vertical"
             android:padding="8dp"
             android:text="@string/rate_us_in_the_play_store"
-            android:visibility="gone"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/support_title"
-            tools:visibility="visible"/>
+            app:layout_constraintTop_toBottomOf="@+id/support_title"/>
 
         <TextView
             android:id="@+id/recommend_to_friend"
@@ -161,7 +155,6 @@
             android:gravity="center_vertical"
             android:padding="8dp"
             android:text="@string/recommend_to_a_friend"
-            android:visibility="gone"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rate_play_store"/>
@@ -174,7 +167,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:text="@string/contact"
-            android:textColor="?attr/colorAccent"
             android:visibility="gone"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
