@@ -36,12 +36,16 @@ public final class MainActivity extends AppCompatActivity {
 
         // Set up social fragment
         SocialFragment fragment =  new SocialFragment.Builder()
+                // Mandatory
                 .setApplicationId("saschpe.alphaplus")
+                // Optional
                 .setApplicationName("Alpha+ Player")
                 .setContactEmailAddress("saschpe@example.com")
                 .setFacebookGroup("466079123741258")
                 .setGooglePlusGroup("116602691405798233571")
                 .setTwitterProfile("saschpe")
+                // Visual customization
+                .setHeaderTextColor(R.color.accent)
                 .build();
 
         // Attach it

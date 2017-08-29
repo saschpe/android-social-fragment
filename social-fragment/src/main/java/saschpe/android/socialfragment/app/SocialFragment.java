@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatDelegate;
@@ -49,17 +50,17 @@ public final class SocialFragment extends Fragment {
     public static final String ARG_GOOGLE_PLUS_GROUP = "google_plus_group";
     public static final String ARG_RECOMMENDATION_SUBJECT = "recommendation_subject";
     public static final String ARG_TWITTER_PROFILE = "twitter_profile";
+    public static final String ARG_HEADER_TEXT_COLOR = "header_text_color";
 
     // Social networks links
     private TextView followTitle;
     private TextView followTwitter;
     private TextView joinGoogleGroup;
     private TextView openFacebookGroup;
-
     // Recommendation links
+    private TextView supportTitle;
     private TextView rateOnPlayStore;
     private TextView recommendToFriend;
-
     // Feedback links
     private TextView contactTitle;
     private TextView provideFeedback;
@@ -80,6 +81,7 @@ public final class SocialFragment extends Fragment {
         joinGoogleGroup = view.findViewById(R.id.join_google_plus_group);
         openFacebookGroup = view.findViewById(R.id.open_facebook_group);
 
+        supportTitle = view.findViewById(R.id.support_title);
         rateOnPlayStore = view.findViewById(R.id.rate_play_store);
         recommendToFriend = view.findViewById(R.id.recommend_to_friend);
 
@@ -98,6 +100,9 @@ public final class SocialFragment extends Fragment {
                 || args.containsKey(ARG_GOOGLE_PLUS_GROUP)
                 || args.containsKey(ARG_TWITTER_PROFILE)) {
             followTitle.setVisibility(View.VISIBLE);
+            if (args.getInt(ARG_HEADER_TEXT_COLOR) != 0) {
+                followTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
+            }
         }
 
         if (args.containsKey(ARG_FACEBOOK_PAGE)) {
@@ -143,6 +148,10 @@ public final class SocialFragment extends Fragment {
                     }
                 }
             });
+        }
+
+        if (args.getInt(ARG_HEADER_TEXT_COLOR) != 0) {
+            supportTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
         }
 
         rateOnPlayStore.setOnClickListener(new View.OnClickListener() {
@@ -193,6 +202,9 @@ public final class SocialFragment extends Fragment {
 
         if (args.containsKey(ARG_CONTACT_EMAIL_ADDRESS)) {
             contactTitle.setVisibility(View.VISIBLE);
+            if (args.getInt(ARG_HEADER_TEXT_COLOR) != 0) {
+                contactTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
+            }
 
             final String emailSubject;
             if (args.containsKey(ARG_CONTACT_EMAIL_SUBJECT)) {
@@ -286,6 +298,11 @@ public final class SocialFragment extends Fragment {
 
         public Builder setTwitterProfile(final String twitterProfile) {
             args.putString(ARG_TWITTER_PROFILE, twitterProfile);
+            return this;
+        }
+
+        public Builder setHeaderTextColor(@ColorRes int color) {
+            args.putInt(ARG_HEADER_TEXT_COLOR, color);
             return this;
         }
 

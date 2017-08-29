@@ -16,12 +16,16 @@ Only the values provided will appear.
 ```java
 // Set up social fragment
 SocialFragment fragment =  new SocialFragment.Builder()
+    // Mandatory
     .setApplicationId(BuildConfig.APPLICATION_ID)
+    // Optional
     .setApplicationName(getString(R.string.app_name))
     .setContactEmailAddress("saschpe@example.com")
     .setFacebookGroup("466079123741258")
     .setGooglePlusGroup("116602691405798233571")
     .setTwitterProfile("saschpe")
+    // Visual customization
+    .setHeaderTextColor(R.color.accent)
     .build();
 
 // Attach it to the parent activity
