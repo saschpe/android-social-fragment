@@ -14,4 +14,23 @@
  * limitations under the License.
  */
 
-include ':social-fragment', ':social-fragment-example'
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '26.0.1'
+
+    defaultConfig {
+        applicationId 'com.example.saschpe.socialfragment'
+        minSdkVersion 17
+        targetSdkVersion 26
+        versionCode 170100
+        versionName '1.0.0'
+        archivesBaseName = "${applicationId}-${versionName}"
+    }
+}
+
+dependencies {
+    implementation project(':social-fragment')
+    implementation 'com.android.support:design:26.0.1'
+}
