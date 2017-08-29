@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/android-social-fragment.iml" filepath="$PROJECT_DIR$/android-social-fragment.iml" />
-      <module fileurl="file://$PROJECT_DIR$/socialfragment/socialfragment.iml" filepath="$PROJECT_DIR$/socialfragment/socialfragment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/social-fragment/social-fragment.iml" filepath="$PROJECT_DIR$/social-fragment/social-fragment.iml" />
     </modules>
   </component>
 </project>

@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package saschpe.android.socialfragment.app;import android.os.Bundle;
+package saschpe.android.socialfragment.app;
+
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
@@ -23,7 +25,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 
-import saschpe.android.socialfragment.app.SocialFragment;
+import static junit.framework.Assert.assertEquals;
 
 @RunWith(RobolectricTestRunner.class)
 public final class SocialFragmentTest  {
@@ -37,20 +39,21 @@ public final class SocialFragmentTest  {
 
     @Test
     public void setupActivity() {
-        SocialFragment fragment = new SocialFragment.Builder()
-                .setAppName(TEST_APP_NAME)
-                .setContactEmailAddress(TEST_EMAIL_ADDRESS)
-                .addFacebookGroup(TEST_FACEBOOK_GROUP)
-                .addGooglePlusGroup(TEST_GOOGLE_PLUS_GROUP)
-                .addTwitterProfile(TEST_TWITTER_PROFILE)
-                .build();
-
         activity = Robolectric.setupActivity(TestActivity.class);
     }
 
     @Test
     public void bla() {
+        SocialFragment fragment = new SocialFragment.Builder()
+                .setApplicationName(TEST_APP_NAME)
+                .setContactEmailAddress(TEST_EMAIL_ADDRESS)
+                .setFacebookGroup(TEST_FACEBOOK_GROUP)
+                .setGooglePlusGroup(TEST_GOOGLE_PLUS_GROUP)
+                .setTwitterProfile(TEST_TWITTER_PROFILE)
+                .build();
         // TODO!
+
+        assertEquals("foo", fragment.packageName);
     }
 
     private static final class TestActivity extends AppCompatActivity {

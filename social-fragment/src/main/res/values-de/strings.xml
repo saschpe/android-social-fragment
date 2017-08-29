@@ -18,10 +18,12 @@
 <resources>
 
     <string name="contact">Kontakt</string>
+    <string name="feedback">Feedback</string>
     <string name="feedback_mail_subject_template">Feedback für %1$s</string>
     <string name="follow">Folgen</string>
     <string name="follow_on_twitter">Folge uns auf Twitter</string>
-    <string name="get_app_template">Lade die %1$s Android app</string>
+    <string name="get_the_app">Hol dir die App!</string>
+    <string name="get_the_app_template">Lade die %1$s App für Android</string>
     <string name="join_facebook_group">Like die Facebook-Page</string>
     <string name="join_google_plus_group">Trete der Google+ Community bei</string>
     <string name="provide_feedback">Gebe uns Feedback</string>
@@ -29,6 +31,7 @@
     <string name="recommend_to_a_friend">Empfehle die App einem Freund</string>
     <string name="send_email">Sende E-Mail…</string>
     <string name="share_via">Teile mit…</string>
+    <string name="i_love_your_app">Ich liebe eure App!</string>
     <string name="support_us">Unterstütze uns</string>
 
 </resources>
