@@ -31,6 +31,7 @@ import static junit.framework.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
 public final class SocialFragmentBuilderTest {
+    private static final String TEST_APPLICATION_ID = "my.app";
     private static final String TEST_APPLICATION_NAME = "MyApp";
     private static final String TEST_CONTACT_EMAIL_ADDRESS = "joe@example.com";
     private static final String TEST_CONTACT_EMAIL_SUBJECT = "Support for MyApp";
@@ -42,27 +43,28 @@ public final class SocialFragmentBuilderTest {
 
     @Rule
     public final ExpectedException expectedException = ExpectedException.none();
-/*
+
     @Test
-    public void build_throwsIfAppNameIsMissing() {
+    public void build_throwsIfAppIdIsMissing() {
         // Arrange, act, assert
         expectedException.expect(IllegalStateException.class);
         new SocialFragment.Builder().build();
-    }*/
+    }
 
     @Test
     public void build_minimalBundleArgsOnlyContainAppName() {
         // Arrange, act
         SocialFragment fragment = new SocialFragment.Builder()
-                .setApplicationName(TEST_APPLICATION_NAME)
+                .setApplicationId(TEST_APPLICATION_ID)
                 .build();
 
         Bundle args = fragment.getArguments();
 
         // Assert
         assertNotNull(fragment);
-        assertTrue(args.containsKey(SocialFragment.ARG_APPLICATION_NAME));
-        assertEquals(TEST_APPLICATION_NAME, args.getString(SocialFragment.ARG_APPLICATION_NAME));
+        assertTrue(args.containsKey(SocialFragment.ARG_APPLICATION_ID));
+        assertEquals(TEST_APPLICATION_ID, args.getString(SocialFragment.ARG_APPLICATION_ID));
+        assertFalse(args.containsKey(SocialFragment.ARG_APPLICATION_NAME));
         assertFalse(args.containsKey(SocialFragment.ARG_CONTACT_EMAIL_ADDRESS));
         assertFalse(args.containsKey(SocialFragment.ARG_CONTACT_EMAIL_SUBJECT));
         assertFalse(args.containsKey(SocialFragment.ARG_CONTACT_EMAIL_TEXT));
@@ -76,6 +78,7 @@ public final class SocialFragmentBuilderTest {
     public void build_withAllOptionsFoundInBundleArgs() {
         // Arrange, act
         SocialFragment fragment = new SocialFragment.Builder()
+                .setApplicationId(TEST_APPLICATION_ID)
                 .setApplicationName(TEST_APPLICATION_NAME)
                 .setContactEmailAddress(TEST_CONTACT_EMAIL_ADDRESS)
                 .setContactEmailSubject(TEST_CONTACT_EMAIL_SUBJECT)
@@ -90,6 +93,8 @@ public final class SocialFragmentBuilderTest {
 
         // Assert
         assertNotNull(fragment);
+        assertTrue(args.containsKey(SocialFragment.ARG_APPLICATION_ID));
+        assertEquals(TEST_APPLICATION_ID, args.getString(SocialFragment.ARG_APPLICATION_ID));
         assertTrue(args.containsKey(SocialFragment.ARG_APPLICATION_NAME));
         assertEquals(TEST_APPLICATION_NAME, args.getString(SocialFragment.ARG_APPLICATION_NAME));
         assertTrue(args.containsKey(SocialFragment.ARG_CONTACT_EMAIL_ADDRESS));

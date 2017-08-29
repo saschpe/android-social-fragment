@@ -25,8 +25,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 
-import static junit.framework.Assert.assertEquals;
-
 @RunWith(RobolectricTestRunner.class)
 public final class SocialFragmentTest  {
     private static final String TEST_EMAIL_ADDRESS = "joe@example.com";
@@ -52,8 +50,6 @@ public final class SocialFragmentTest  {
                 .setTwitterProfile(TEST_TWITTER_PROFILE)
                 .build();
         // TODO!
-
-        assertEquals("foo", fragment.packageName);
     }
 
     private static final class TestActivity extends AppCompatActivity {

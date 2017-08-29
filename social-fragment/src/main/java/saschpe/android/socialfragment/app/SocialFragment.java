@@ -23,6 +23,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,7 @@ import saschpe.android.socialfragment.R;
  * recommendation and sharing with friends.
  */
 public final class SocialFragment extends Fragment {
+    public static final String ARG_APPLICATION_ID = "app_id";
     public static final String ARG_APPLICATION_NAME = "app_name";
     public static final String ARG_CONTACT_EMAIL_ADDRESS = "contact_email_address";
     public static final String ARG_CONTACT_EMAIL_SUBJECT = "contact_email_subject";
@@ -51,15 +53,16 @@ public final class SocialFragment extends Fragment {
     private TextView followTwitter;
     private TextView joinGoogleGroup;
     private TextView openFacebookGroup;
-    public String packageName; // TODO!!!!
     private TextView provideFeedback;
     private TextView rateOnPlayStore;
     private TextView recommendToFriend;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        packageName = getContext().getPackageName().replace(".debug", "");
+
+        // Support vector drawable support for pre-Lollipop devices
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
 
     @Override
@@ -124,6 +127,7 @@ public final class SocialFragment extends Fragment {
             });
         }
 
+        rateOnPlayStore.setVisibility(View.VISIBLE);
         rateOnPlayStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -137,56 +141,54 @@ public final class SocialFragment extends Fragment {
                     flags |= Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET;
                 }
                 Intent goToMarket = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("market://details?id=" + packageName))
+                        Uri.parse("market://details?id=" + args.getString(ARG_APPLICATION_ID)))
                         .addFlags(flags);
                 try {
                     startActivity(goToMarket);
                 } catch (ActivityNotFoundException e) {
                     startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("http://play.google.com/store/apps/details?id=" + packageName)));
+                            Uri.parse("http://play.google.com/store/apps/details?id=" + args.getString(ARG_APPLICATION_ID))));
                 }
             }
         });
 
-        if (args.containsKey(ARG_APPLICATION_NAME)) {
-            final String subject;
+            final String recommendSubject;
             if (args.containsKey(ARG_RECOMMENDATION_SUBJECT)) {
-                subject = args.getString(ARG_RECOMMENDATION_SUBJECT);
+                recommendSubject = args.getString(ARG_RECOMMENDATION_SUBJECT);
             } else if (args.containsKey(ARG_APPLICATION_NAME)) {
-                subject = getString(R.string.get_the_app_template, args.getString(ARG_APPLICATION_NAME));
+                recommendSubject = getString(R.string.get_the_app_template, args.getString(ARG_APPLICATION_NAME));
             } else  {
-                subject = getString(R.string.get_the_app);
+                recommendSubject = getString(R.string.get_the_app);
             }
 
             recommendToFriend.setVisibility(View.VISIBLE);
             recommendToFriend.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String text = Uri.parse("http://play.google.com/store/apps/details?id=" + packageName).toString();
+                    String text = Uri.parse("http://play.google.com/store/apps/details?id=" + args.getString(ARG_APPLICATION_ID)).toString();
 
                     Intent sharingIntent = new Intent(Intent.ACTION_SEND)
                             .setType("text/plain")
-                            .putExtra(Intent.EXTRA_SUBJECT, subject)
+                            .putExtra(Intent.EXTRA_SUBJECT, recommendSubject)
                             .putExtra(Intent.EXTRA_TEXT, text);
                     startActivity(Intent.createChooser(sharingIntent, view.getContext().getString(R.string.share_via)));
                 }
             });
-        }
 
         if (args.containsKey(ARG_CONTACT_EMAIL_ADDRESS)) {
-            final String subject;
+            final String emailSubject;
             if (args.containsKey(ARG_CONTACT_EMAIL_SUBJECT)) {
-                subject = args.getString(ARG_CONTACT_EMAIL_SUBJECT);
+                emailSubject = args.getString(ARG_CONTACT_EMAIL_SUBJECT);
             } else if (args.containsKey(ARG_APPLICATION_NAME)) {
-                subject = getString(R.string.feedback_mail_subject_template, args.getString(ARG_APPLICATION_NAME));
+                emailSubject = getString(R.string.feedback_mail_subject_template, args.getString(ARG_APPLICATION_NAME));
             } else {
-                subject = getString(R.string.feedback);
+                emailSubject = getString(R.string.feedback);
             }
-            final String text;
+            final String emailText;
             if (args.containsKey(ARG_CONTACT_EMAIL_TEXT)) {
-                text = args.getString(ARG_CONTACT_EMAIL_TEXT);
+                emailText = args.getString(ARG_CONTACT_EMAIL_TEXT);
             } else {
-                text = getString(R.string.i_love_your_app);
+                emailText = getString(R.string.i_love_your_app);
             }
 
             provideFeedback.setVisibility(View.VISIBLE);
@@ -195,8 +197,8 @@ public final class SocialFragment extends Fragment {
                 public void onClick(View view) {
                     Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
                             "mailto", args.getString(ARG_CONTACT_EMAIL_ADDRESS), null))
-                            .putExtra(Intent.EXTRA_SUBJECT, subject)
-                            .putExtra(Intent.EXTRA_TEXT, text)
+                            .putExtra(Intent.EXTRA_SUBJECT, emailSubject)
+                            .putExtra(Intent.EXTRA_TEXT, emailText)
                             .putExtra(Intent.EXTRA_EMAIL, args.getString(ARG_CONTACT_EMAIL_ADDRESS));
                     startActivity(Intent.createChooser(emailIntent, view.getContext().getString(R.string.send_email)));
                 }
@@ -211,8 +213,20 @@ public final class SocialFragment extends Fragment {
         private final Bundle args = new Bundle();
 
         /**
-         * Set the application name used for links to the Play Store and for
+         * Set the application id used for links to the Play Store and for
          * recommendations to friends.
+         *
+         * @param appId The app id
+         * @return The builder
+         */
+        public Builder setApplicationId(final String appId) {
+            args.putString(ARG_APPLICATION_ID, appId);
+            return this;
+        }
+
+        /**
+         * Set the application name used in recommendation message titles and
+         * elsewhere.
          *
          * @param appName The app name
          * @return The builder
@@ -258,6 +272,10 @@ public final class SocialFragment extends Fragment {
         }
 
         public SocialFragment build() {
+            if (!args.containsKey(ARG_APPLICATION_ID)) {
+                throw new IllegalStateException("Application ID is mandatory!");
+            }
+
             SocialFragment fragment = new SocialFragment();
             fragment.setArguments(args);
             return fragment;
