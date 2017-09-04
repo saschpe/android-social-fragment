@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2017 Sascha Peilicke
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+
+    <string name="feedback_mail_subject_template">Feedback-ul pentru %s</string>
+    <string name="follow">Urma</string>
+    <string name="follow_on_twitter">Urmărește-ne pe Twitter</string>
+    <string name="get_the_app_template">Obțineți %s aplicația Android</string>
+    <string name="open_source">Open Source</string>
+    <string name="provide_feedback">Oferi feedback</string>
+    <string name="rate_us_in_the_play_store">Ne rata în Magazin Play</string>
+    <string name="recommend_to_a_friend">Recomanda-l unui prieten</string>
+    <string name="send_email">Trimite email…</string>
+    <string name="share_via">Spune-le prietenilor prin …</string>
+    <string name="support_us">Ajuta-ne</string>
+
+</resources>

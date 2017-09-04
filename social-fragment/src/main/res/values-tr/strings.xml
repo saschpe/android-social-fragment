@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2017 Sascha Peilicke
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+
+    <string name="feedback_mail_subject_template">%s için geri bildirim</string>
+    <string name="follow">Takip et</string>
+    <string name="follow_on_twitter">Bizi Twitter\'da takip edin</string>
+    <string name="get_the_app_template">%s Android uygulamasını edinin</string>
+    <string name="provide_feedback">Geribildirim sağlamak</string>
+    <string name="rate_us_in_the_play_store">Play Store\'da oy verin</string>
+    <string name="recommend_to_a_friend">Bunu bir arkadaşınıza önerin</string>
+    <string name="send_email">Eposta gönder…</string>
+    <string name="share_via">İle paylaş…</string>
+    <string name="support_us">Bizi destekle</string>
+
+</resources>

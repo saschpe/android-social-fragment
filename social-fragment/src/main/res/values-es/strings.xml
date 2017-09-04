@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2017 Sascha Peilicke
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+
+    <string name="feedback_mail_subject_template">Reseña de %s</string>
+    <string name="follow">Seguir</string>
+    <string name="follow_on_twitter">Síganos en Twitter</string>
+    <string name="get_the_app_template">Obtener la aplicación de Android de %s</string>
+    <string name="open_source">Código abierto</string>
+    <string name="provide_feedback">Suministre realimentación</string>
+    <string name="rate_us_in_the_play_store">Escríbenos en Play Store</string>
+    <string name="recommend_to_a_friend">Recomiende a un amigo</string>
+    <string name="send_email">Enviar correo electrónico…</string>
+    <string name="share_via">Compartir vía…</string>
+    <string name="support_us">Apoyanos</string>
+
+</resources>
