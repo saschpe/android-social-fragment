@@ -16,6 +16,6 @@
 
 <resources>
 
-    <string name="app_name">Social-Fragment Example</string>
+    <string name="app_name" translatable="false">Social-Fragment Example</string>
 
 </resources>
