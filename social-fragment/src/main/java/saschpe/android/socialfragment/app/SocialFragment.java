@@ -244,6 +244,10 @@ public final class SocialFragment extends Fragment {
 
         if (args.containsKey(ARG_GITHUB_PROJECT)) {
             openSourceTitle.setVisibility(View.VISIBLE);
+            if (args.getInt(ARG_HEADER_TEXT_COLOR) != 0) {
+                openSourceTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
+            }
+
             forkOnGithub.setVisibility(View.VISIBLE);
             forkOnGithub.setOnClickListener(new View.OnClickListener() {
                 @Override
