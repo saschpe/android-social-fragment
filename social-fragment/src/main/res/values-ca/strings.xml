@@ -22,15 +22,12 @@
     <string name="follow_on_twitter">Segueix-nos a Twitter</string>
     <string name="get_the_app">Obtenir el aplicació per Android</string>
     <string name="get_the_app_template">Obtenir el %s aplicació per Android</string>
-    <string name="help_and_feedback">Ajuda i comentaris</string>
-    <string name="info">Info</string>
     <string name="open_source">Codi obert</string>
     <string name="provide_feedback">proporcionar retroalimentació</string>
     <string name="rate_us_in_the_play_store">ens classificaria al Play Store</string>
     <string name="recommend_to_a_friend">Recomanaria a un amic</string>
     <string name="send_email">Envia un correu electrònic…</string>
     <string name="share_via">Compartir a través de …</string>
-    <string name="social">Social</string>
     <string name="support_us">dóna\'ns suport</string>
 
 </resources>
