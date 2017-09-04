@@ -37,6 +37,7 @@ public final class SocialFragmentBuilderTest {
     private static final String TEST_CONTACT_EMAIL_SUBJECT = "Support for MyApp";
     private static final String TEST_CONTACT_EMAIL_TEXT = "I like!";
     private static final String TEST_FACEBOOK_GROUP = "my_facebook_group";
+    private static final String TEST_GITHUB_PROJECT = "saschpe/PlanningPoker";
     private static final String TEST_GOOGLE_PLUS_GROUP = "my_google_plus_group";
     private static final String TEST_RECOMMENDATION_SUBJECT = "Get it!";
     private static final String TEST_TWITTER_PROFILE = "my_twitter_profile";
@@ -69,6 +70,7 @@ public final class SocialFragmentBuilderTest {
         assertFalse(args.containsKey(SocialFragment.ARG_CONTACT_EMAIL_SUBJECT));
         assertFalse(args.containsKey(SocialFragment.ARG_CONTACT_EMAIL_TEXT));
         assertFalse(args.containsKey(SocialFragment.ARG_FACEBOOK_PAGE));
+        assertFalse(args.containsKey(SocialFragment.ARG_GITHUB_PROJECT));
         assertFalse(args.containsKey(SocialFragment.ARG_GOOGLE_PLUS_GROUP));
         assertFalse(args.containsKey(SocialFragment.ARG_RECOMMENDATION_SUBJECT));
         assertFalse(args.containsKey(SocialFragment.ARG_TWITTER_PROFILE));
@@ -84,6 +86,7 @@ public final class SocialFragmentBuilderTest {
                 .setContactEmailSubject(TEST_CONTACT_EMAIL_SUBJECT)
                 .setContactEmailText(TEST_CONTACT_EMAIL_TEXT)
                 .setFacebookGroup(TEST_FACEBOOK_GROUP)
+                .setGithubProject(TEST_GITHUB_PROJECT)
                 .setGooglePlusGroup(TEST_GOOGLE_PLUS_GROUP)
                 .setRecommendationSubject(TEST_RECOMMENDATION_SUBJECT)
                 .setTwitterProfile(TEST_TWITTER_PROFILE)
@@ -105,6 +108,8 @@ public final class SocialFragmentBuilderTest {
         assertEquals(TEST_CONTACT_EMAIL_TEXT, args.getString(SocialFragment.ARG_CONTACT_EMAIL_TEXT));
         assertTrue(args.containsKey(SocialFragment.ARG_FACEBOOK_PAGE));
         assertEquals(TEST_FACEBOOK_GROUP, args.getString(SocialFragment.ARG_FACEBOOK_PAGE));
+        assertTrue(args.containsKey(SocialFragment.ARG_GITHUB_PROJECT));
+        assertEquals(TEST_GITHUB_PROJECT, args.getString(SocialFragment.ARG_GITHUB_PROJECT));
         assertTrue(args.containsKey(SocialFragment.ARG_GOOGLE_PLUS_GROUP));
         assertEquals(TEST_GOOGLE_PLUS_GROUP, args.getString(SocialFragment.ARG_GOOGLE_PLUS_GROUP));
         assertTrue(args.containsKey(SocialFragment.ARG_RECOMMENDATION_SUBJECT));

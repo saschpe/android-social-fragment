@@ -42,6 +42,7 @@ public final class MainActivity extends AppCompatActivity {
                 .setApplicationName("Alpha+ Player")
                 .setContactEmailAddress("saschpe@example.com")
                 .setFacebookGroup("466079123741258")
+                .setGithubProject("saschpe/PlanningPoker")
                 .setGooglePlusGroup("116602691405798233571")
                 .setTwitterProfile("saschpe")
                 // Visual customization

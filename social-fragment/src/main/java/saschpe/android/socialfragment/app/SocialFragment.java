@@ -51,6 +51,7 @@ public final class SocialFragment extends Fragment {
     public static final String ARG_RECOMMENDATION_SUBJECT = "recommendation_subject";
     public static final String ARG_TWITTER_PROFILE = "twitter_profile";
     public static final String ARG_HEADER_TEXT_COLOR = "header_text_color";
+    public static final String ARG_GITHUB_PROJECT = "github_project";
 
     // Social networks links
     private TextView followTitle;
@@ -64,6 +65,9 @@ public final class SocialFragment extends Fragment {
     // Feedback links
     private TextView contactTitle;
     private TextView provideFeedback;
+    // Open Source links
+    private TextView openSourceTitle;
+    private TextView forkOnGithub;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,6 +91,9 @@ public final class SocialFragment extends Fragment {
 
         contactTitle = view.findViewById(R.id.contact_title);
         provideFeedback = view.findViewById(R.id.provide_feedback);
+
+        openSourceTitle = view.findViewById(R.id.open_source_title);
+        forkOnGithub = view.findViewById(R.id.fork_on_github);
 
         return view;
     }
@@ -234,6 +241,18 @@ public final class SocialFragment extends Fragment {
                 }
             });
         }
+
+        if (args.containsKey(ARG_GITHUB_PROJECT)) {
+            openSourceTitle.setVisibility(View.VISIBLE);
+            forkOnGithub.setVisibility(View.VISIBLE);
+            forkOnGithub.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(Intent.ACTION_VIEW)
+                            .setData(Uri.parse("https://github.com/saschpe/PlanningPoker")));
+                }
+            });
+        }
     }
 
     /**
@@ -283,6 +302,11 @@ public final class SocialFragment extends Fragment {
 
         public Builder setFacebookGroup(final String facebookPage) {
             args.putString(ARG_FACEBOOK_PAGE, facebookPage);
+            return this;
+        }
+
+        public Builder setGithubProject(final String githubProject) {
+            args.putString(ARG_GITHUB_PROJECT, githubProject);
             return this;
         }
 
