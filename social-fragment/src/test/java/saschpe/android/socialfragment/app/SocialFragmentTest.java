@@ -20,18 +20,21 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 
 @RunWith(RobolectricTestRunner.class)
+@Ignore
 public final class SocialFragmentTest  {
+    private static final String TEST_APPLICATION_ID = "my.app";
+    private static final String TEST_APPLICATION_NAME = "MyApp";
     private static final String TEST_EMAIL_ADDRESS = "joe@example.com";
     private static final String TEST_FACEBOOK_GROUP = "my_facebook_group";
     private static final String TEST_GOOGLE_PLUS_GROUP = "my_google_plus_group";
     private static final String TEST_TWITTER_PROFILE = "my_twitter_profile";
-    public static final String TEST_APP_NAME = "app.name";
 
     private TestActivity activity;
 
@@ -43,7 +46,8 @@ public final class SocialFragmentTest  {
     @Test
     public void bla() {
         SocialFragment fragment = new SocialFragment.Builder()
-                .setApplicationName(TEST_APP_NAME)
+                .setApplicationId(TEST_APPLICATION_ID)
+                .setApplicationName(TEST_APPLICATION_NAME)
                 .setContactEmailAddress(TEST_EMAIL_ADDRESS)
                 .setFacebookGroup(TEST_FACEBOOK_GROUP)
                 .setGooglePlusGroup(TEST_GOOGLE_PLUS_GROUP)
