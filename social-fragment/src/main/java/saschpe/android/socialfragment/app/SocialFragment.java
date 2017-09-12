@@ -18,12 +18,16 @@ package saschpe.android.socialfragment.app;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,6 +52,7 @@ public final class SocialFragment extends Fragment {
     public static final String ARG_CONTACT_EMAIL_TEXT = "contact_email_text";
     public static final String ARG_FACEBOOK_PAGE = "facebook_page";
     public static final String ARG_GOOGLE_PLUS_GROUP = "google_plus_group";
+    public static final String ARG_ICON_TINT = "drawable_tint";
     public static final String ARG_RECOMMENDATION_SUBJECT = "recommendation_subject";
     public static final String ARG_TWITTER_PROFILE = "twitter_profile";
     public static final String ARG_HEADER_TEXT_COLOR = "header_text_color";
@@ -114,6 +119,7 @@ public final class SocialFragment extends Fragment {
 
         if (args.containsKey(ARG_FACEBOOK_PAGE)) {
             openFacebookGroup.setVisibility(View.VISIBLE);
+            applyIconTint(args, openFacebookGroup, R.drawable.ic_facebook);
             openFacebookGroup.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -129,6 +135,7 @@ public final class SocialFragment extends Fragment {
 
         if (args.containsKey(ARG_GOOGLE_PLUS_GROUP)) {
             joinGoogleGroup.setVisibility(View.VISIBLE);
+            applyIconTint(args, joinGoogleGroup, R.drawable.ic_google_plus);
             joinGoogleGroup.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -145,6 +152,7 @@ public final class SocialFragment extends Fragment {
 
         if (args.containsKey(ARG_TWITTER_PROFILE)) {
             followTwitter.setVisibility(View.VISIBLE);
+            applyIconTint(args, followTwitter, R.drawable.ic_twitter);
             followTwitter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -161,6 +169,7 @@ public final class SocialFragment extends Fragment {
             supportTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
         }
 
+        applyIconTint(args, rateOnPlayStore, R.drawable.ic_star);
         rateOnPlayStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -194,6 +203,7 @@ public final class SocialFragment extends Fragment {
             recommendSubject = getString(R.string.get_the_app);
         }
 
+        applyIconTint(args, recommendToFriend, R.drawable.ic_share);
         recommendToFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -229,6 +239,7 @@ public final class SocialFragment extends Fragment {
             }
 
             provideFeedback.setVisibility(View.VISIBLE);
+            applyIconTint(args, provideFeedback, R.drawable.ic_email);
             provideFeedback.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -249,6 +260,7 @@ public final class SocialFragment extends Fragment {
             }
 
             forkOnGithub.setVisibility(View.VISIBLE);
+            applyIconTint(args, forkOnGithub, R.drawable.ic_github_circle);
             forkOnGithub.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -256,6 +268,15 @@ public final class SocialFragment extends Fragment {
                             .setData(Uri.parse("https://github.com/saschpe/PlanningPoker")));
                 }
             });
+        }
+    }
+
+    private void applyIconTint(Bundle args, TextView textView, @DrawableRes int drawableRes) {
+        if (args.getInt(ARG_ICON_TINT) != 0) {
+            Drawable drawable = getResources().getDrawable(drawableRes);
+            Drawable wrappedDrawable = DrawableCompat.wrap(drawable);
+            DrawableCompat.setTint(wrappedDrawable, ContextCompat.getColor(getActivity(), args.getInt(ARG_ICON_TINT)));
+            textView.setCompoundDrawablesWithIntrinsicBounds(wrappedDrawable, null, null, null);
         }
     }
 
@@ -311,6 +332,11 @@ public final class SocialFragment extends Fragment {
 
         public Builder setGithubProject(final String githubProject) {
             args.putString(ARG_GITHUB_PROJECT, githubProject);
+            return this;
+        }
+
+        public Builder setIconTint(final @ColorRes int iconTintRes) {
+            args.putInt(ARG_ICON_TINT, iconTintRes);
             return this;
         }
 

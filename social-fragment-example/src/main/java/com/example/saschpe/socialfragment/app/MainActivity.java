@@ -47,6 +47,7 @@ public final class MainActivity extends AppCompatActivity {
                 .setTwitterProfile("saschpe")
                 // Visual customization
                 .setHeaderTextColor(R.color.accent)
+                .setIconTint(android.R.color.white)
                 .build();
 
         // Attach it
