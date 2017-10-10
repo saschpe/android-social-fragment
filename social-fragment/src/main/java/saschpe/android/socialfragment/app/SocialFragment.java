@@ -18,6 +18,7 @@ package saschpe.android.socialfragment.app;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -35,6 +36,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import saschpe.android.socialfragment.R;
+import saschpe.android.socialfragment.databinding.FragmentSocialBinding;
 
 /**
  * Fragment to display links to the Play Store and social networks.
@@ -44,35 +46,8 @@ import saschpe.android.socialfragment.R;
  * for Facebook, Google+ and Twitter. Provides links into the Play Store for
  * recommendation and sharing with friends.
  */
-public final class SocialFragment extends Fragment {
-    public static final String ARG_APPLICATION_ID = "app_id";
-    public static final String ARG_APPLICATION_NAME = "app_name";
-    public static final String ARG_CONTACT_EMAIL_ADDRESS = "contact_email_address";
-    public static final String ARG_CONTACT_EMAIL_SUBJECT = "contact_email_subject";
-    public static final String ARG_CONTACT_EMAIL_TEXT = "contact_email_text";
-    public static final String ARG_FACEBOOK_PAGE = "facebook_page";
-    public static final String ARG_GOOGLE_PLUS_GROUP = "google_plus_group";
-    public static final String ARG_ICON_TINT = "drawable_tint";
-    public static final String ARG_RECOMMENDATION_SUBJECT = "recommendation_subject";
-    public static final String ARG_TWITTER_PROFILE = "twitter_profile";
-    public static final String ARG_HEADER_TEXT_COLOR = "header_text_color";
-    public static final String ARG_GITHUB_PROJECT = "github_project";
-
-    // Social networks links
-    private TextView followTitle;
-    private TextView followTwitter;
-    private TextView joinGoogleGroup;
-    private TextView openFacebookGroup;
-    // Recommendation links
-    private TextView supportTitle;
-    private TextView rateOnPlayStore;
-    private TextView recommendToFriend;
-    // Feedback links
-    private TextView contactTitle;
-    private TextView provideFeedback;
-    // Open Source links
-    private TextView openSourceTitle;
-    private TextView forkOnGithub;
+public final class SocialFragment extends Fragment implements Const{
+    private FragmentSocialBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,23 +59,8 @@ public final class SocialFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_social, container, false);
-        followTitle = view.findViewById(R.id.follow_title);
-        followTwitter = view.findViewById(R.id.follow_twitter);
-        joinGoogleGroup = view.findViewById(R.id.join_google_plus_group);
-        openFacebookGroup = view.findViewById(R.id.open_facebook_group);
-
-        supportTitle = view.findViewById(R.id.support_title);
-        rateOnPlayStore = view.findViewById(R.id.rate_play_store);
-        recommendToFriend = view.findViewById(R.id.recommend_to_friend);
-
-        contactTitle = view.findViewById(R.id.contact_title);
-        provideFeedback = view.findViewById(R.id.provide_feedback);
-
-        openSourceTitle = view.findViewById(R.id.open_source_title);
-        forkOnGithub = view.findViewById(R.id.fork_on_github);
-
-        return view;
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_social, container, false);
+        return binding.getRoot();
     }
 
     @Override
@@ -111,16 +71,16 @@ public final class SocialFragment extends Fragment {
         if (args.containsKey(ARG_FACEBOOK_PAGE)
                 || args.containsKey(ARG_GOOGLE_PLUS_GROUP)
                 || args.containsKey(ARG_TWITTER_PROFILE)) {
-            followTitle.setVisibility(View.VISIBLE);
+            binding.followTitle.setVisibility(View.VISIBLE);
             if (args.getInt(ARG_HEADER_TEXT_COLOR) != 0) {
-                followTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
+                binding.followTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
             }
         }
 
         if (args.containsKey(ARG_FACEBOOK_PAGE)) {
-            openFacebookGroup.setVisibility(View.VISIBLE);
-            applyIconTint(args, openFacebookGroup, R.drawable.ic_facebook);
-            openFacebookGroup.setOnClickListener(new View.OnClickListener() {
+            binding.openFacebookGroup.setVisibility(View.VISIBLE);
+            applyIconTint(args, binding.openFacebookGroup, R.drawable.ic_facebook);
+            binding.openFacebookGroup.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     try {
@@ -134,9 +94,9 @@ public final class SocialFragment extends Fragment {
         }
 
         if (args.containsKey(ARG_GOOGLE_PLUS_GROUP)) {
-            joinGoogleGroup.setVisibility(View.VISIBLE);
-            applyIconTint(args, joinGoogleGroup, R.drawable.ic_google_plus);
-            joinGoogleGroup.setOnClickListener(new View.OnClickListener() {
+            binding.joinGooglePlusGroup.setVisibility(View.VISIBLE);
+            applyIconTint(args, binding.joinGooglePlusGroup, R.drawable.ic_google_plus);
+            binding.joinGooglePlusGroup.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     try {
@@ -151,9 +111,9 @@ public final class SocialFragment extends Fragment {
         }
 
         if (args.containsKey(ARG_TWITTER_PROFILE)) {
-            followTwitter.setVisibility(View.VISIBLE);
-            applyIconTint(args, followTwitter, R.drawable.ic_twitter);
-            followTwitter.setOnClickListener(new View.OnClickListener() {
+            binding.followTwitter.setVisibility(View.VISIBLE);
+            applyIconTint(args, binding.followTwitter, R.drawable.ic_twitter);
+            binding.followTwitter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     try {
@@ -166,11 +126,11 @@ public final class SocialFragment extends Fragment {
         }
 
         if (args.getInt(ARG_HEADER_TEXT_COLOR) != 0) {
-            supportTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
+            binding.supportTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
         }
 
-        applyIconTint(args, rateOnPlayStore, R.drawable.ic_star);
-        rateOnPlayStore.setOnClickListener(new View.OnClickListener() {
+        applyIconTint(args, binding.ratePlayStore, R.drawable.ic_star);
+        binding.ratePlayStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // To count with Play market back stack, After pressing back button,
@@ -203,8 +163,8 @@ public final class SocialFragment extends Fragment {
             recommendSubject = getString(R.string.get_the_app);
         }
 
-        applyIconTint(args, recommendToFriend, R.drawable.ic_share);
-        recommendToFriend.setOnClickListener(new View.OnClickListener() {
+        applyIconTint(args, binding.recommendToFriend, R.drawable.ic_share);
+        binding.recommendToFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String text = Uri.parse("http://play.google.com/store/apps/details?id=" + args.getString(ARG_APPLICATION_ID)).toString();
@@ -218,9 +178,9 @@ public final class SocialFragment extends Fragment {
         });
 
         if (args.containsKey(ARG_CONTACT_EMAIL_ADDRESS)) {
-            contactTitle.setVisibility(View.VISIBLE);
+            binding.contactTitle.setVisibility(View.VISIBLE);
             if (args.getInt(ARG_HEADER_TEXT_COLOR) != 0) {
-                contactTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
+                binding.contactTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
             }
 
             final String emailSubject;
@@ -238,9 +198,9 @@ public final class SocialFragment extends Fragment {
                 emailText = getString(R.string.i_love_your_app);
             }
 
-            provideFeedback.setVisibility(View.VISIBLE);
-            applyIconTint(args, provideFeedback, R.drawable.ic_email);
-            provideFeedback.setOnClickListener(new View.OnClickListener() {
+            binding.provideFeedback.setVisibility(View.VISIBLE);
+            applyIconTint(args, binding.provideFeedback, R.drawable.ic_email);
+            binding.provideFeedback.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
@@ -254,14 +214,14 @@ public final class SocialFragment extends Fragment {
         }
 
         if (args.containsKey(ARG_GITHUB_PROJECT)) {
-            openSourceTitle.setVisibility(View.VISIBLE);
+            binding.openSourceTitle.setVisibility(View.VISIBLE);
             if (args.getInt(ARG_HEADER_TEXT_COLOR) != 0) {
-                openSourceTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
+                binding.openSourceTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
             }
 
-            forkOnGithub.setVisibility(View.VISIBLE);
-            applyIconTint(args, forkOnGithub, R.drawable.ic_github_circle);
-            forkOnGithub.setOnClickListener(new View.OnClickListener() {
+            binding.forkOnGithub.setVisibility(View.VISIBLE);
+            applyIconTint(args, binding.forkOnGithub, R.drawable.ic_github_circle);
+            binding.forkOnGithub.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     startActivity(new Intent(Intent.ACTION_VIEW)
