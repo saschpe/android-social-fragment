@@ -40,6 +40,10 @@ android {
         versionName '1.0.3'
     }
 
+    dataBinding {
+        enabled = true
+    }
+
     buildTypes {
         debug {
             consumerProguardFiles 'proguard-rules.pro'
