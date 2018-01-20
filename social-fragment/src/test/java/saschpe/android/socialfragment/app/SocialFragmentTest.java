@@ -28,7 +28,7 @@ import org.robolectric.RobolectricTestRunner;
 
 @RunWith(RobolectricTestRunner.class)
 @Ignore
-public final class SocialFragmentTest  {
+public final class SocialFragmentTest {
     private static final String TEST_APPLICATION_ID = "my.app";
     private static final String TEST_APPLICATION_NAME = "MyApp";
     private static final String TEST_EMAIL_ADDRESS = "joe@example.com";

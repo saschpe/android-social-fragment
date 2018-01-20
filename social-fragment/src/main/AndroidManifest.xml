@@ -14,12 +14,11 @@
   ~ limitations under the License.
   -->
 
-<manifest
-    package="saschpe.android.socialfragment"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="saschpe.android.socialfragment">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <application/>
+    <application />
 
 </manifest>

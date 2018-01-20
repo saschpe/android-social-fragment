@@ -35,7 +35,7 @@ public final class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // Set up social fragment
-        SocialFragment fragment =  new SocialFragment.Builder()
+        SocialFragment fragment = new SocialFragment.Builder()
                 // Mandatory
                 .setApplicationId("saschpe.alphaplus")
                 // Optional
@@ -52,7 +52,7 @@ public final class MainActivity extends AppCompatActivity {
 
         // Attach it
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_placeholder,fragment)
+                .add(R.id.fragment_placeholder, fragment)
                 .commit();
     }
 }
