@@ -24,8 +24,8 @@ android {
         applicationId 'com.example.saschpe.socialfragment'
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 170104
-        versionName '1.0.4'
+        versionCode 170105
+        versionName '1.0.5'
         archivesBaseName = "${applicationId}-${versionName}"
     }
 }
