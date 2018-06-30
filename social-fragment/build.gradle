@@ -58,8 +58,8 @@ android {
 
 dependencies {
     // Runtime dependencies
-    compile 'com.android.support:appcompat-v7:27.0.2'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    api 'com.android.support:appcompat-v7:27.0.2'
+    api 'com.android.support.constraint:constraint-layout:1.0.2'
 
     // Test dependencies
     testImplementation 'junit:junit:4.12'
