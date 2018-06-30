@@ -24,6 +24,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -104,15 +105,19 @@ public final class SocialFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final Bundle args = getArguments();
+
+        if (args == null) {
+            return;
+        }
 
         if (args.containsKey(ARG_FACEBOOK_PAGE)
                 || args.containsKey(ARG_GOOGLE_PLUS_GROUP)
                 || args.containsKey(ARG_TWITTER_PROFILE)) {
             followTitle.setVisibility(View.VISIBLE);
-            if (args.getInt(ARG_HEADER_TEXT_COLOR) != 0) {
+            if (args.getInt(ARG_HEADER_TEXT_COLOR) != 0 && getContext() != null) {
                 followTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
             }
         }
@@ -165,7 +170,7 @@ public final class SocialFragment extends Fragment {
             });
         }
 
-        if (args.getInt(ARG_HEADER_TEXT_COLOR) != 0) {
+        if (args.getInt(ARG_HEADER_TEXT_COLOR) != 0 && getContext() != null) {
             supportTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
         }
 
@@ -275,7 +280,9 @@ public final class SocialFragment extends Fragment {
         if (args.getInt(ARG_ICON_TINT) != 0) {
             Drawable drawable = getResources().getDrawable(drawableRes);
             Drawable wrappedDrawable = DrawableCompat.wrap(drawable);
-            DrawableCompat.setTint(wrappedDrawable, ContextCompat.getColor(getActivity(), args.getInt(ARG_ICON_TINT)));
+            if (getContext() != null) {
+                DrawableCompat.setTint(wrappedDrawable, ContextCompat.getColor(getContext(), args.getInt(ARG_ICON_TINT)));
+            }
             textView.setCompoundDrawablesWithIntrinsicBounds(wrappedDrawable, null, null, null);
         }
     }
