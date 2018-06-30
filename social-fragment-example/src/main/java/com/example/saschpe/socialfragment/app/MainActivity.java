@@ -17,11 +17,11 @@
 package com.example.saschpe.socialfragment.app;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
 import com.example.saschpe.socialfragment.R;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import saschpe.android.socialfragment.app.SocialFragment;
 
 public final class MainActivity extends AppCompatActivity {
@@ -52,7 +52,7 @@ public final class MainActivity extends AppCompatActivity {
 
         // Attach it
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_placeholder, fragment)
+                .replace(R.id.fragment_placeholder, fragment)
                 .commit();
     }
 }
