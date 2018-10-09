@@ -3,7 +3,7 @@
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Android%20SocialFragment-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/5872)
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 [![Build Status](https://travis-ci.org/saschpe/android-social-fragment.svg?branch=master)](https://travis-ci.org/saschpe/android-social-fragment)
-<a href="http://www.methodscount.com/?lib=saschpe.android%3Asocial-fragment%3A1.0.5"><img src="https://img.shields.io/badge/Methods and size-core: 100 | deps: 19640 | 25 KB-e91e63.svg"/></a>
+<a href="http://www.methodscount.com/?lib=saschpe.android%3Asocial-fragment%3A2.0.0"><img src="https://img.shields.io/badge/Methods and size-core: 100 | deps: 19640 | 25 KB-e91e63.svg"/></a>
 
 A reusable fragment to display links to social networks, the Play Store as well
 as recommendation and support email links. The fragment tries to open installed
@@ -41,7 +41,7 @@ getSupportFragmentManager().beginTransaction()
 
 # Download
 ```groovy
-compile 'saschpe.android:social-fragment:1.0.5'
+compile 'saschpe.android:social-fragment:2.0.0'
 ```
 
 Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].
