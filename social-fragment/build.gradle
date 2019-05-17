@@ -19,6 +19,11 @@ plugins {
     id 'maven-publish'
 }
 
+repositories {
+    jcenter()
+    google()
+}
+
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.file) {
     Properties localProperties = new Properties()

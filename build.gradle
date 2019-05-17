@@ -21,6 +21,7 @@ buildscript {
 
     dependencies {
         classpath("com.android.tools.build:gradle:3.4.1")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.31")
     }
 }
 
@@ -28,27 +29,25 @@ plugins {
     id("com.diffplug.gradle.spotless") version "3.23.0"
 }
 
-allprojects {
-    repositories {
-        jcenter()
-        google()
-    }
+repositories {
+    jcenter()
+    google()
 }
 
 spotless {
     freshmark {
     }
     java {
-        target "**/*.java"
+        target("**/*.java")
         trimTrailingWhitespace()
         removeUnusedImports()
     }
     kotlin {
-        target "**/*.kt"
+        target("**/*.kt")
         ktlint()
     }
     kotlinGradle {
-        target "**/*.gradle.kts"
+        target("**/*.gradle.kts")
         ktlint()
     }
 }
