@@ -40,13 +40,9 @@ android {
     }
 
     buildTypes {
-        debug {
-            consumerProguardFiles 'proguard-rules.pro'
-        }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            consumerProguardFiles 'proguard-rules.pro'
         }
     }
 
