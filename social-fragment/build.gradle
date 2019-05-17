@@ -15,8 +15,8 @@
  */
 
 plugins {
-    id 'com.jfrog.bintray' version '1.8.4'
-    id 'maven-publish'
+    id("com.jfrog.bintray") version "1.8.4"
+    id("maven-publish")
 }
 
 repositories {
@@ -24,7 +24,7 @@ repositories {
     google()
 }
 
-def localPropertiesFile = rootProject.file('local.properties')
+def localPropertiesFile = rootProject.file("local.properties")
 if (localPropertiesFile.file) {
     Properties localProperties = new Properties()
     localPropertiesFile.withInputStream { localProperties.load(it) }
@@ -33,7 +33,7 @@ if (localPropertiesFile.file) {
     }
 }
 
-apply plugin: 'com.android.library'
+apply plugin: "com.android.library"
 
 android {
     compileSdkVersion(28)
@@ -46,28 +46,26 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
 
     lintOptions {
-        abortOnError false
+        abortOnError = false
     }
 }
 
 dependencies {
-    // Runtime dependencies
-    api 'androidx.appcompat:appcompat:1.0.2'
-    api 'androidx.constraintlayout:constraintlayout:1.1.3'
+    api("androidx.appcompat:appcompat:1.0.2")
+    api("androidx.constraintlayout:constraintlayout:1.1.3")
 
-    // Test dependencies
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.robolectric:robolectric:3.8'
-    testImplementation 'org.mockito:mockito-core:2.23.0'
+    testImplementation("junit:junit:4.12")
+    testImplementation("org.robolectric:robolectric:4.2")
+    testImplementation("org.mockito:mockito-core:2.27.0")
 }
 
-group = 'saschpe.android'
+group = "saschpe.android"
 version = android.defaultConfig.versionName
 
 task androidJavadocs(type: Javadoc) {
