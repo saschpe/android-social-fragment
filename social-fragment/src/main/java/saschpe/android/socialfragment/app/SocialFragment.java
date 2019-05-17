@@ -31,6 +31,7 @@ import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.StyleRes;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
@@ -55,6 +56,7 @@ public final class SocialFragment extends Fragment {
     public static final String ARG_ICON_TINT = "drawable_tint";
     public static final String ARG_RECOMMENDATION_SUBJECT = "recommendation_subject";
     public static final String ARG_TWITTER_PROFILE = "twitter_profile";
+    public static final String ARG_HEADER_TEXT_APPEARANCE = "header_text_appearance";
     public static final String ARG_HEADER_TEXT_COLOR = "header_text_color";
     public static final String ARG_GITHUB_PROJECT = "github_project";
 
@@ -112,9 +114,7 @@ public final class SocialFragment extends Fragment {
 
         if (args.containsKey(ARG_FACEBOOK_PAGE) || args.containsKey(ARG_TWITTER_PROFILE)) {
             followTitle.setVisibility(View.VISIBLE);
-            if (args.getInt(ARG_HEADER_TEXT_COLOR) != 0 && getContext() != null) {
-                followTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
-            }
+            applyTextArgs(args, followTitle);
         }
 
         if (args.containsKey(ARG_FACEBOOK_PAGE)) {
@@ -148,9 +148,7 @@ public final class SocialFragment extends Fragment {
             });
         }
 
-        if (args.getInt(ARG_HEADER_TEXT_COLOR) != 0 && getContext() != null) {
-            supportTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
-        }
+        applyTextArgs(args, supportTitle);
 
         applyIconTint(args, rateOnPlayStore, R.drawable.ic_star);
         rateOnPlayStore.setOnClickListener(new View.OnClickListener() {
@@ -202,9 +200,7 @@ public final class SocialFragment extends Fragment {
 
         if (args.containsKey(ARG_CONTACT_EMAIL_ADDRESS)) {
             contactTitle.setVisibility(View.VISIBLE);
-            if (args.getInt(ARG_HEADER_TEXT_COLOR) != 0) {
-                contactTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
-            }
+            applyTextArgs(args, contactTitle);
 
             final String emailSubject;
             if (args.containsKey(ARG_CONTACT_EMAIL_SUBJECT)) {
@@ -238,9 +234,7 @@ public final class SocialFragment extends Fragment {
 
         if (args.containsKey(ARG_GITHUB_PROJECT)) {
             openSourceTitle.setVisibility(View.VISIBLE);
-            if (args.getInt(ARG_HEADER_TEXT_COLOR) != 0) {
-                openSourceTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
-            }
+            applyTextArgs(args, openSourceTitle);
 
             forkOnGithub.setVisibility(View.VISIBLE);
             applyIconTint(args, forkOnGithub, R.drawable.ic_github_circle);
@@ -251,6 +245,17 @@ public final class SocialFragment extends Fragment {
                             .setData(Uri.parse("https://github.com/saschpe/PlanningPoker")));
                 }
             });
+        }
+    }
+
+    private void applyTextArgs(Bundle args, TextView supportTitle) {
+        if (getContext() != null) {
+            if (args.getInt(ARG_HEADER_TEXT_APPEARANCE) != 0) {
+                supportTitle.setTextAppearance(getContext(), args.getInt(ARG_HEADER_TEXT_APPEARANCE));
+            }
+            if (args.getInt(ARG_HEADER_TEXT_COLOR) != 0) {
+                supportTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
+            }
         }
     }
 
@@ -320,8 +325,8 @@ public final class SocialFragment extends Fragment {
             return this;
         }
 
-        public Builder setIconTint(final @ColorRes int iconTintRes) {
-            args.putInt(ARG_ICON_TINT, iconTintRes);
+        public Builder setIconTint(final @ColorRes int iconTintResId) {
+            args.putInt(ARG_ICON_TINT, iconTintResId);
             return this;
         }
 
@@ -335,8 +340,13 @@ public final class SocialFragment extends Fragment {
             return this;
         }
 
-        public Builder setHeaderTextColor(@ColorRes int color) {
-            args.putInt(ARG_HEADER_TEXT_COLOR, color);
+        public Builder setHeaderTextAppearance(final @StyleRes int appearanceResId) {
+            args.putInt(ARG_HEADER_TEXT_APPEARANCE, appearanceResId);
+            return this;
+        }
+
+        public Builder setHeaderTextColor(final @ColorRes int colorResId) {
+            args.putInt(ARG_HEADER_TEXT_COLOR, colorResId);
             return this;
         }
 

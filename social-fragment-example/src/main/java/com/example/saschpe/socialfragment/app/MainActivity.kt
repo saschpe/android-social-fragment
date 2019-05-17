@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
             .setGithubProject("saschpe/PlanningPoker")
             .setTwitterProfile("saschpe")
             // Visual customization
+            .setHeaderTextAppearance(R.style.TextAppearance_MaterialComponents_Headline6)
             .setHeaderTextColor(R.color.accent)
             .setIconTint(android.R.color.white)
             .build()
