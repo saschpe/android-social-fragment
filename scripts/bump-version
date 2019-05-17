@@ -10,8 +10,8 @@ if [ $# -ne 1 ] ; then
     die "Usage: $0 [VERSION]\n\n\tExample: $0 0.0.1"
 fi
 
-#APP_GRADLE="app/build.gradle"
-LIB_GRADLE="social-fragment/build.gradle"
+#APP_GRADLE="app/build.gradle.kts"
+LIB_GRADLE="social-fragment/build.gradle.kts"
 README="README.md"
 
 # Increase SDK version (used as versionName in most modules)

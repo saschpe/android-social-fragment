@@ -36,12 +36,12 @@ if (localPropertiesFile.file) {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion(28)
 
     defaultConfig {
-        minSdkVersion 17
-        targetSdkVersion 28
-        versionName '2.0.1'
+        minSdkVersion(17)
+        targetSdkVersion(28)
+        versionName = "2.0.1"
     }
 
     buildTypes {

@@ -14,9 +14,11 @@
  * limitations under the License.
  */
 
-apply plugin: "com.android.application"
-apply plugin: "kotlin-android"
-apply plugin: "kotlin-android-extensions"
+plugins {
+    id("com.android.application")
+    kotlin("android")
+    kotlin("android.extensions")
+}
 
 repositories {
     jcenter()
