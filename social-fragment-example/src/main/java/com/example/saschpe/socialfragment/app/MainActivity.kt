@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             .setApplicationName("Alpha+ Player")
             .setContactEmailAddress("saschpe@example.com")
             .setFacebookGroup("466079123741258")
-            .setGithubProject("saschpe/PlanningPoker")
+            .setGithubProject("saschpe/android-social-fragment")
             .setTwitterProfile("saschpe")
             // Visual customization
             .setHeaderTextAppearance(R.style.TextAppearance_MaterialComponents_Headline6)

@@ -242,7 +242,7 @@ public final class SocialFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     startActivity(new Intent(Intent.ACTION_VIEW)
-                            .setData(Uri.parse("https://github.com/saschpe/PlanningPoker")));
+                            .setData(Uri.parse("https://github.com/" + args.getString(ARG_GITHUB_PROJECT))));
                 }
             });
         }
