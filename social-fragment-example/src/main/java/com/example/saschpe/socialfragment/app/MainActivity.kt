@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
             .setContactEmailAddress("saschpe@example.com")
             .setFacebookGroup("466079123741258")
             .setGithubProject("saschpe/android-social-fragment")
+            .setGitlabProject("saschpe")
             .setTwitterProfile("saschpe")
             // Visual customization
             .setHeaderTextAppearance(R.style.TextAppearance_MaterialComponents_Headline6)

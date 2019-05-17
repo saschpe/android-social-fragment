@@ -21,7 +21,8 @@
     <string name="feedback_mail_subject_template">Feedback für %1$s</string>
     <string name="follow">Folgen</string>
     <string name="follow_on_twitter">Folge uns auf Twitter</string>
-    <string name="fork_on_github">Forke uns auf Github</string>
+    <string name="fork_on_github">Forke auf Github</string>
+    <string name="fork_on_gitlab">Forke auf Gitlab</string>
     <string name="get_the_app">Hol dir die App!</string>
     <string name="get_the_app_template">Lade die %1$s App für Android</string>
     <string name="join_facebook_group">Like die Facebook-Page</string>

@@ -59,6 +59,7 @@ public final class SocialFragment extends Fragment {
     public static final String ARG_HEADER_TEXT_APPEARANCE = "header_text_appearance";
     public static final String ARG_HEADER_TEXT_COLOR = "header_text_color";
     public static final String ARG_GITHUB_PROJECT = "github_project";
+    public static final String ARG_GITLAB_PROJECT = "gitlab_project";
 
     // Social networks links
     private TextView followTitle;
@@ -74,6 +75,7 @@ public final class SocialFragment extends Fragment {
     // Open Source links
     private TextView openSourceTitle;
     private TextView forkOnGithub;
+    private TextView forkOnGitlab;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -99,6 +101,7 @@ public final class SocialFragment extends Fragment {
 
         openSourceTitle = view.findViewById(R.id.open_source_title);
         forkOnGithub = view.findViewById(R.id.fork_on_github);
+        forkOnGitlab = view.findViewById(R.id.fork_on_gitlab);
 
         return view;
     }
@@ -232,10 +235,11 @@ public final class SocialFragment extends Fragment {
             });
         }
 
-        if (args.containsKey(ARG_GITHUB_PROJECT)) {
+        if (args.containsKey(ARG_GITHUB_PROJECT) || args.containsKey(ARG_GITLAB_PROJECT)) {
             openSourceTitle.setVisibility(View.VISIBLE);
             applyTextArgs(args, openSourceTitle);
-
+        }
+        if (args.containsKey(ARG_GITHUB_PROJECT)) {
             forkOnGithub.setVisibility(View.VISIBLE);
             applyIconTint(args, forkOnGithub, R.drawable.ic_github_circle);
             forkOnGithub.setOnClickListener(new View.OnClickListener() {
@@ -243,6 +247,17 @@ public final class SocialFragment extends Fragment {
                 public void onClick(View v) {
                     startActivity(new Intent(Intent.ACTION_VIEW)
                             .setData(Uri.parse("https://github.com/" + args.getString(ARG_GITHUB_PROJECT))));
+                }
+            });
+        }
+        if (args.containsKey(ARG_GITLAB_PROJECT)) {
+            forkOnGitlab.setVisibility(View.VISIBLE);
+            applyIconTint(args, forkOnGitlab, R.drawable.ic_gitlab);
+            forkOnGitlab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(Intent.ACTION_VIEW)
+                            .setData(Uri.parse("https://gitlab.com/" + args.getString(ARG_GITLAB_PROJECT))));
                 }
             });
         }
@@ -322,6 +337,11 @@ public final class SocialFragment extends Fragment {
 
         public Builder setGithubProject(final String githubProject) {
             args.putString(ARG_GITHUB_PROJECT, githubProject);
+            return this;
+        }
+
+        public Builder setGitlabProject(final String gitlabProject) {
+            args.putString(ARG_GITLAB_PROJECT, gitlabProject);
             return this;
         }
 

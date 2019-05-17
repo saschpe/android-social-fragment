@@ -13,7 +13,6 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
 <resources>
 
     <string name="contact">Contact</string>
@@ -22,6 +21,7 @@
     <string name="follow">Follow</string>
     <string name="follow_on_twitter">Follow us on Twitter</string>
     <string name="fork_on_github">Fork on Github</string>
+    <string name="fork_on_gitlab">Fork on Gitlab</string>
     <string name="get_the_app">Get the app!</string>
     <string name="get_the_app_template">Get the %1$s app for Android</string>
     <string name="join_facebook_group">Like the Facebook page</string>
