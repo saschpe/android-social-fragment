@@ -34,7 +34,6 @@ public final class SocialFragmentTest {
     private static final String TEST_APPLICATION_NAME = "MyApp";
     private static final String TEST_EMAIL_ADDRESS = "joe@example.com";
     private static final String TEST_FACEBOOK_GROUP = "my_facebook_group";
-    private static final String TEST_GOOGLE_PLUS_GROUP = "my_google_plus_group";
     private static final String TEST_TWITTER_PROFILE = "my_twitter_profile";
 
     private TestActivity activity;
@@ -51,7 +50,6 @@ public final class SocialFragmentTest {
                 .setApplicationName(TEST_APPLICATION_NAME)
                 .setContactEmailAddress(TEST_EMAIL_ADDRESS)
                 .setFacebookGroup(TEST_FACEBOOK_GROUP)
-                .setGooglePlusGroup(TEST_GOOGLE_PLUS_GROUP)
                 .setTwitterProfile(TEST_TWITTER_PROFILE)
                 .build();
         // TODO!

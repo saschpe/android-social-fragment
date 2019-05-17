@@ -52,7 +52,6 @@ public final class SocialFragment extends Fragment {
     public static final String ARG_CONTACT_EMAIL_SUBJECT = "contact_email_subject";
     public static final String ARG_CONTACT_EMAIL_TEXT = "contact_email_text";
     public static final String ARG_FACEBOOK_PAGE = "facebook_page";
-    public static final String ARG_GOOGLE_PLUS_GROUP = "google_plus_group";
     public static final String ARG_ICON_TINT = "drawable_tint";
     public static final String ARG_RECOMMENDATION_SUBJECT = "recommendation_subject";
     public static final String ARG_TWITTER_PROFILE = "twitter_profile";
@@ -62,7 +61,6 @@ public final class SocialFragment extends Fragment {
     // Social networks links
     private TextView followTitle;
     private TextView followTwitter;
-    private TextView joinGoogleGroup;
     private TextView openFacebookGroup;
     // Recommendation links
     private TextView supportTitle;
@@ -88,7 +86,6 @@ public final class SocialFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_social, container, false);
         followTitle = view.findViewById(R.id.follow_title);
         followTwitter = view.findViewById(R.id.follow_twitter);
-        joinGoogleGroup = view.findViewById(R.id.join_google_plus_group);
         openFacebookGroup = view.findViewById(R.id.open_facebook_group);
 
         supportTitle = view.findViewById(R.id.support_title);
@@ -113,9 +110,7 @@ public final class SocialFragment extends Fragment {
             return;
         }
 
-        if (args.containsKey(ARG_FACEBOOK_PAGE)
-                || args.containsKey(ARG_GOOGLE_PLUS_GROUP)
-                || args.containsKey(ARG_TWITTER_PROFILE)) {
+        if (args.containsKey(ARG_FACEBOOK_PAGE) || args.containsKey(ARG_TWITTER_PROFILE)) {
             followTitle.setVisibility(View.VISIBLE);
             if (args.getInt(ARG_HEADER_TEXT_COLOR) != 0 && getContext() != null) {
                 followTitle.setTextColor(getContext().getResources().getColor(args.getInt(ARG_HEADER_TEXT_COLOR)));
@@ -133,23 +128,6 @@ public final class SocialFragment extends Fragment {
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/" + args.get(ARG_FACEBOOK_PAGE))));
                     } catch (Exception e) {
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/" + args.get(ARG_FACEBOOK_PAGE))));
-                    }
-                }
-            });
-        }
-
-        if (args.containsKey(ARG_GOOGLE_PLUS_GROUP)) {
-            joinGoogleGroup.setVisibility(View.VISIBLE);
-            applyIconTint(args, joinGoogleGroup, R.drawable.ic_google_plus);
-            joinGoogleGroup.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    try {
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/communities/" + args.get(ARG_GOOGLE_PLUS_GROUP)))
-                                .setPackage("com.google.android.apps.plus");
-                        startActivity(intent);
-                    } catch (ActivityNotFoundException e) {
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/communities/" + args.get(ARG_GOOGLE_PLUS_GROUP))));
                     }
                 }
             });
@@ -344,11 +322,6 @@ public final class SocialFragment extends Fragment {
 
         public Builder setIconTint(final @ColorRes int iconTintRes) {
             args.putInt(ARG_ICON_TINT, iconTintRes);
-            return this;
-        }
-
-        public Builder setGooglePlusGroup(final String googlePlusGroup) {
-            args.putString(ARG_GOOGLE_PLUS_GROUP, googlePlusGroup);
             return this;
         }
 
