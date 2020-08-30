@@ -25,10 +25,10 @@
     <string name="fork_on_gitlab">Forke auf Gitlab</string>
     <string name="get_the_app">Hol dir die App!</string>
     <string name="get_the_app_template">Lade die %1$s App für Android</string>
-    <string name="join_facebook_group">Like die Facebook-Page</string>
+    <string name="join_facebook_group">Like die Facebook-Seite</string>
     <string name="join_google_plus_group">Tritt der Google+ Community bei</string>
     <string name="open_source">Open Source</string>values-ca
-    <string name="provide_feedback">Gebe uns Feedback</string>
+    <string name="provide_feedback">Gib uns Feedback</string>
     <string name="rate_us_in_the_play_store">Bewerte uns im Play Store</string>
     <string name="recommend_to_a_friend">Empfiehl die App einem Freund</string>
     <string name="send_email">Sende E-Mail…</string>
