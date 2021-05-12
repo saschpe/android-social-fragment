@@ -1,13 +1,19 @@
 # Custom ignore rules, update with:
-# { cat .gitignore-custom ; gibo Android Gradle JetBrains Kotlin Vim } > .gitignore
+# { cat .gitignore-custom ; gibo dump Android Gradle JetBrains Kotlin Vim } > .gitignore
 
+.idea/libraries-with-intellij-classes.xml
 .idea/misc.xml
-pom.xml
-### https://raw.github.com/github/gitignore/9931a0607752664877a66bb220f11aa285dc1047/Android.gitignore
+**/pom.xml
+*.jks
+buildSrc/src/main/kotlin/Secrets.kt
+
+### https://raw.github.com/github/gitignore/b2ccc4644b997fa2e86da5ae37f3b053c39f3d7b/Android.gitignore
 
 # Built application files
 *.apk
+*.aar
 *.ap_
+*.aab
 
 # Files for the ART/Dalvik VM
 *.dex
@@ -19,6 +25,8 @@ pom.xml
 bin/
 gen/
 out/
+#  Uncomment the following line in case you need and you don't have the release build type files in your app
+# release/
 
 # Gradle files
 .gradle/
@@ -47,17 +55,23 @@ captures/
 .idea/assetWizardSettings.xml
 .idea/dictionaries
 .idea/libraries
+# Android Studio 3 in .gitignore file.
 .idea/caches
+.idea/modules.xml
+# Comment next line if keeping position of elements in Navigation Editor is relevant for you
+.idea/navEditor.xml
 
 # Keystore files
-# Uncomment the following line if you do not want to check your keystore files in.
+# Uncomment the following lines if you do not want to check your keystore files in.
 #*.jks
+#*.keystore
 
 # External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild
+.cxx/
 
 # Google Services (e.g. APIs or Firebase)
-google-services.json
+# google-services.json
 
 # Freeline
 freeline.py
@@ -71,11 +85,25 @@ fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
 
+# Version control
+vcs.xml
 
-### https://raw.github.com/github/gitignore/9931a0607752664877a66bb220f11aa285dc1047/Gradle.gitignore
+# lint
+lint/intermediates/
+lint/generated/
+lint/outputs/
+lint/tmp/
+# lint/reports/
+
+# Android Profiling
+*.hprof
+
+
+### https://raw.github.com/github/gitignore/b2ccc4644b997fa2e86da5ae37f3b053c39f3d7b/Gradle.gitignore
 
 .gradle
-/build/
+**/build/
+!src/**/build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -90,9 +118,9 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 
-### https://raw.github.com/github/gitignore/9931a0607752664877a66bb220f11aa285dc1047/Global/JetBrains.gitignore
+### https://raw.github.com/github/gitignore/b2ccc4644b997fa2e86da5ae37f3b053c39f3d7b/Global/JetBrains.gitignore
 
-# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
@@ -101,6 +129,12 @@ gradle-app.setting
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+
+# AWS User-specific
+.idea/**/aws.xml
+
+# Generated files
+.idea/**/contentModel.xml
 
 # Sensitive or high-churn files
 .idea/**/dataSources/
@@ -114,6 +148,19 @@ gradle-app.setting
 # Gradle
 .idea/**/gradle.xml
 .idea/**/libraries
+
+# Gradle and Maven with auto-import
+# When using Gradle or Maven with auto-import, you should exclude module files,
+# since they will be recreated, and may cause churn.  Uncomment if using
+# auto-import.
+# .idea/artifacts
+# .idea/compiler.xml
+# .idea/jarRepositories.xml
+# .idea/modules.xml
+# .idea/*.iml
+# .idea/modules
+# *.iml
+# *.ipr
 
 # CMake
 cmake-build-*/
@@ -145,8 +192,11 @@ fabric.properties
 # Editor-based Rest Client
 .idea/httpRequests
 
+# Android studio 3.1+ serialized cache file
+.idea/caches/build_file_checksums.ser
 
-### https://raw.github.com/github/gitignore/9931a0607752664877a66bb220f11aa285dc1047/Kotlin.gitignore
+
+### https://raw.github.com/github/gitignore/b2ccc4644b997fa2e86da5ae37f3b053c39f3d7b/Kotlin.gitignore
 
 # Compiled class file
 *.class
@@ -173,10 +223,11 @@ fabric.properties
 hs_err_pid*
 
 
-### https://raw.github.com/github/gitignore/9931a0607752664877a66bb220f11aa285dc1047/Global/Vim.gitignore
+### https://raw.github.com/github/gitignore/b2ccc4644b997fa2e86da5ae37f3b053c39f3d7b/Global/Vim.gitignore
 
 # Swap
 [._]*.s[a-v][a-z]
+!*.svg  # comment out if you don't need vector files
 [._]*.sw[a-p]
 [._]s[a-rt-v][a-z]
 [._]ss[a-gi-z]
@@ -184,6 +235,7 @@ hs_err_pid*
 
 # Session
 Session.vim
+Sessionx.vim
 
 # Temporary
 .netrwhist
