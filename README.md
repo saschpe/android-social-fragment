@@ -47,7 +47,7 @@ repositories {
 }
 
 dependencies {
-    implementation("de.peilicke.sascha:android-social-fragment:2.0.1")
+    implementation("de.peilicke.sascha:android-social-fragment:2.1.0")
 }
 ```
 
