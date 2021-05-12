@@ -26,12 +26,12 @@ repositories {
 }
 
 android {
-    compileSdkVersion(28)
+    compileSdkVersion(30)
 
     defaultConfig {
         applicationId = "com.example.saschpe.socialfragment"
         minSdkVersion(17)
-        targetSdkVersion(28)
+        targetSdkVersion(30)
         versionCode = 170020100
         versionName = "2.1.0"
     }
