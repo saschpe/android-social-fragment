@@ -32,8 +32,8 @@ android {
         applicationId = "com.example.saschpe.socialfragment"
         minSdkVersion(17)
         targetSdkVersion(30)
-        versionCode = 170020100
-        versionName = "2.1.0"
+        versionCode = 170020101
+        versionName = "2.1.1"
     }
 }
 
