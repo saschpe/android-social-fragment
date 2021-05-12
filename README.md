@@ -1,5 +1,5 @@
 # Android Social Fragment
-[![Download](https://api.bintray.com/packages/saschpe/maven/android-social-fragment/images/download.svg)](https://bintray.com/saschpe/maven/android-social-fragment/_latestVersion)
+![Maven Central](https://img.shields.io/maven-central/v/de.peilicke.sascha/android-social-fragment)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Android%20SocialFragment-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/5872)
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 [![Build Status](https://travis-ci.org/saschpe/android-social-fragment.svg?branch=master)](https://travis-ci.org/saschpe/android-social-fragment)
@@ -40,11 +40,16 @@ getSupportFragmentManager().beginTransaction()
 <img alt="Screenshot 3" src="assets/device-art/social-fragment-3.png" width="256" />
 
 # Download
-```groovy
-compile 'saschpe.android:social-fragment:2.0.1'
-```
+Artifacts are published to [Maven Central][maven-central]:
+```kotlin
+repositories {
+    mavenCentral()
+}
 
-Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].
+dependencies {
+    implementation("de.peilicke.sascha:android-social-fragment:2.0.1")
+}
+```
 
 # In use by
 * [Alpha+ Player](https://play.google.com/store/apps/details?id=saschpe.alphaplus)
@@ -68,4 +73,4 @@ Snapshots of the development version are available in [Sonatype's `snapshots` re
     limitations under the License.
 
 
- [snap]: https://oss.sonatype.org/content/repositories/snapshots/
+[maven-central]: https://search.maven.org/artifact/de.peilicke.sascha/android-social-fragment
