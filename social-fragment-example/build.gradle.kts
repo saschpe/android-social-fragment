@@ -21,7 +21,7 @@ plugins {
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
     google()
 }
 
@@ -39,7 +39,6 @@ android {
 
 dependencies {
     implementation(project(":social-fragment"))
-    implementation("androidx.core:core-ktx:1.0.2")
-    implementation("com.google.android.material:material:1.0.0")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.31")
+    implementation("androidx.core:core-ktx:1.3.2")
+    implementation("com.google.android.material:material:1.3.0")
 }
