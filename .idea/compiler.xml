@@ -11,5 +11,9 @@
       <entry name="!?*.kt" />
       <entry name="!?*.clj" />
     </wildcardResourcePatterns>
+    <bytecodeTargetLevel>
+      <module name="android-social-fragment.social-fragment" target="11" />
+      <module name="android-social-fragment.social-fragment-example" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -18,36 +18,44 @@ buildscript {
     repositories {
         google()
     }
-
     dependencies {
-        classpath("com.android.tools.build:gradle:3.4.1")
+        classpath("com.android.tools.build:gradle:4.1.1")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.31")
     }
 }
 
 plugins {
-    id("com.diffplug.gradle.spotless") version "3.23.0"
+    id("com.diffplug.spotless") version "5.12.4"
+    id("com.github.ben-manes.versions") version "0.38.0"
 }
 
 repositories {
-    jcenter()
-    google()
+    mavenCentral()
 }
 
 spotless {
-    freshmark {
-    }
-    java {
-        target("**/*.java")
+    format("misc") {
+        target("**/*.gradle", "**/*.md", "**/.gitignore")
         trimTrailingWhitespace()
-        removeUnusedImports()
+        endWithNewline()
+    }
+    freshmark {
+        target("**/*.md")
+        propertiesFile("gradle.properties")
     }
     kotlin {
-        target("**/*.kt")
-        ktlint()
+        target("*/src/**/*.kt")
+        ktlint().userData(mapOf("disabled_rules" to "no-wildcard-imports"))
     }
     kotlinGradle {
         target("**/*.gradle.kts")
         ktlint()
+    }
+}
+
+tasks.withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask> {
+    rejectVersionIf {
+        fun isStable(version: String) = Regex("^[0-9,.v-]+(-r)?$").matches(version)
+        !isStable(candidate.version) && isStable(currentVersion)
     }
 }

@@ -11,7 +11,7 @@ apps on the user's device first and resorts to the web browser otherwise.
 
 # Usage
 Use the **SocialFragment.Builder** class to set up a new **SocialFragment**.
-Only the values provided will appear. 
+Only the values provided will appear.
 
 ```java
 // Set up social fragment
