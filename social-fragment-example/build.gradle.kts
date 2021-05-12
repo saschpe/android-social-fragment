@@ -21,7 +21,7 @@ plugins {
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
     google()
 }
 
@@ -32,14 +32,13 @@ android {
         applicationId = "com.example.saschpe.socialfragment"
         minSdkVersion(17)
         targetSdkVersion(28)
-        versionCode = 170020003
-        versionName = "2.0.3"
+        versionCode = 170020100
+        versionName = "2.1.0"
     }
 }
 
 dependencies {
     implementation(project(":social-fragment"))
-    implementation("androidx.core:core-ktx:1.0.2")
-    implementation("com.google.android.material:material:1.0.0")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.31")
+    implementation("androidx.core:core-ktx:1.3.2")
+    implementation("com.google.android.material:material:1.3.0")
 }

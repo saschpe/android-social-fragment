@@ -14,5 +14,7 @@
  * limitations under the License.
  */
 
+rootProject.name = "android-social-fragment"
+
 include(":social-fragment")
 include(":social-fragment-example")
